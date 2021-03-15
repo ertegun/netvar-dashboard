@@ -3,31 +3,36 @@
     <!-- <img alt="Vue logo" src="../assets/gruparge.png"> -->
     <!-- <HelloWorld msg="Welcome to Grup Arge Apps"/> -->
     <div class="row">
-      <app-info-card
-        v-for="app in myApps"
-        v-bind:key="app._id"
-        :myappinfo="app"
-      />
+      <div class="col m3"></div>
+      <div class="col m6">
+        <ul class="collection">
+          <AppList
+            v-for="app in myApps"
+            v-bind:key="app._id"
+            :myappinfo="app"
+          />
+        </ul>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import AppInfoCard from "../components/AppInfoCard.vue";
+import AppList from "../components/AppList.vue";
 export default {
-  name: "Home",
+  name: "AdminAppList",
   components: {
-    AppInfoCard,
+    AppList,
   },
   created: function () {
-    this.$store.dispatch("initMyApps");
   },
   methods: {
-    get() {},
+    // get() {},
   },
   computed: {
     myApps() {
+      // veri ilk defa anasayfada vuex ile set ediliyor
       return this.$store.getters.getMyapps;
     },
   },

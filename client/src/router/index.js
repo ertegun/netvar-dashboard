@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import AdminAppList from '../views/AdminAppList.vue'
+import editCard from '../views/editCard.vue'
+import newCard from '../views/newCard.vue'
+
 
 Vue.use(VueRouter)
 
@@ -9,6 +13,21 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/AdminAppList',
+    name: 'AdminAppList',
+    component: AdminAppList
+  },
+  {
+    path: '/editCard',
+    name: 'edit-params',
+    component: editCard
+  },
+  {
+    path: '/newCard',
+    name: 'newCard',
+    component: newCard
   },
   {
     path: '/about',
