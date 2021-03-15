@@ -18,6 +18,8 @@ const { Myapps } = require("./models/myapplist");
 const path = require('path')    // <-- added
 app.use(express.static(path.join(__dirname, 'dist')))
 
+
+
 app.get("/getir", (req, res) => {
   Myapps.find({}, (err, myapps) => {
     // if (err) throw err;
@@ -100,3 +102,7 @@ app.listen(PORT, async () => {
 mongoose.connection
   .on("open", () => console.log("Bağlantı başarıyla sağlanmıştır..."))
   .on("error", (error) => console.log("Bağlantı oluşturulamadı.", error.message));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "/dist/index.html"));
+  });
