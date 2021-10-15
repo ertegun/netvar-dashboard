@@ -2,7 +2,7 @@ const express = require("express")
 const mongoose = require('mongoose');
 var cors = require('cors');
 const app = express()
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3030
 let conn;
 app.use(express.json())
 app.use(cors());
@@ -87,7 +87,7 @@ app.post('/sil', function (req, res) {
 app.listen(PORT, async () => {
   console.log(`http://localhost:${PORT}`);
 
-  await mongoose.connect('mongodb://root:example@mongodb:27017/app_db?authSource=admin&readPreference=primary&appname=NetvarDashboard&ssl=false', {
+  await mongoose.connect('mongodb://root:example@mongodb:8017/app_db?authSource=admin&readPreference=primary&appname=NetvarDashboard&ssl=false', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     // useFindAndModify: false,
@@ -103,6 +103,6 @@ mongoose.connection
   .on("open", () => console.log("Bağlantı başarıyla sağlanmıştır..."))
   .on("error", (error) => console.log("Bağlantı oluşturulamadı.", error.message));
 
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "/dist/index.html"));
-  });
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/dist/index.html"));
+});
