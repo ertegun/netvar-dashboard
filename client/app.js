@@ -87,7 +87,8 @@ app.post('/sil', function (req, res) {
 app.listen(PORT, async () => {
   console.log(`http://localhost:${PORT}`);
 
-  await mongoose.connect('mongodb://root:example@mongodb:8017/app_db?authSource=admin&readPreference=primary&appname=NetvarDashboard&ssl=false', {
+  await mongoose.connect('mongodb://root:example@mongodb:27017/app_db?authSource=admin&readPreference=primary&appname=NetvarDashboard&ssl=false', {
+  // await mongoose.connect('mongodb://root:example@192.168.20.60:8017/app_db?authSource=admin&readPreference=primary&appname=NetvarDashboard&ssl=false', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     // useFindAndModify: false,
